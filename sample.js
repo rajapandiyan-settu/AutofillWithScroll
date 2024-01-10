@@ -317,7 +317,7 @@ var grid = new ej.grids.Grid({
     columns: [
         {
             field: 'OrderID', isPrimaryKey: true, headerText: 'Order ID', textAlign: 'Right',
-            validationRules: { required: true, number: true }, visible: false, width: 120,
+            validationRules: { required: true, number: true }, visible: true, width: 120,
             // freeze: 'Left',
         },
         {
@@ -325,9 +325,9 @@ var grid = new ej.grids.Grid({
             validationRules: { required: true }, width: 140,
             // freeze: 'Left',
         },
-        { field: 'Field1', width: 120, visible: false },
+        { field: 'Field1', width: 120, visible: true },
         {
-            field: 'ShipCountry', headerText: 'Ship Country',visible: false, editType: 'dropdownedit', width: 150,
+            field: 'ShipCountry', headerText: 'Ship Country',visible: true, editType: 'dropdownedit', width: 150,
             edit: { params: { popupHeight: '300px' } }
         },
         { field: 'Field2', width: 120 },
@@ -345,7 +345,7 @@ var grid = new ej.grids.Grid({
             width: 170,
             // freeze: 'Fixed',
         },
-        { field: 'Field8', width: 120, visible: false },
+        { field: 'Field8', width: 120, visible: true },
         { field: 'Field9', width: 120 },
         { field: 'Field10', width: 120, 
         // freeze: 'Right' 
