@@ -298,17 +298,14 @@ for (var i = 0; i < 200; i++) {
 var isPrevent = false;
 var grid = new ej.grids.Grid({
     dataSource: gridData,
-    pageSettings: { pageSize: 20},
+    pageSettings: { pageSize: 20 },
     allowPaging: true,
     enableAutoFill: true,
-    // frozenRows: 4,
-    enableHover: false,
-    allowSelection: true,
     toolbar: ['Add', 'Update', 'Cancel'],
     selectionSettings: { type: 'Multiple', mode: 'Cell', cellSelectionMode: 'Box' },
     editSettings: { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Batch' },
     load: function (args) {
-        this.on('selectLikeExcel', function (args) {
+        this.on('before-select-autofill-cell', function (args) {
             if (args.isAutoFill && grid.selectionModule.selectedRowCellIndexes.length && grid.selectionModule.selectedRowCellIndexes[0].cellIndexes.indexOf(args.endInd.cellIndex) === -1) {
                 args.cancel = isPrevent;
             }
@@ -318,24 +315,22 @@ var grid = new ej.grids.Grid({
         {
             field: 'OrderID', isPrimaryKey: true, headerText: 'Order ID', textAlign: 'Right',
             validationRules: { required: true, number: true }, visible: true, width: 120,
-            // freeze: 'Left',
         },
         {
             field: 'CustomerID', headerText: 'Customer ID',
             validationRules: { required: true }, width: 140,
-            // freeze: 'Left',
         },
-        { field: 'Field1', width: 120, visible: true },
+        { field: 'Field1', width: 160, visible: true },
         {
-            field: 'ShipCountry', headerText: 'Ship Country',visible: true, editType: 'dropdownedit', width: 150,
+            field: 'ShipCountry', headerText: 'Ship Country', visible: true, editType: 'dropdownedit', width: 150,
             edit: { params: { popupHeight: '300px' } }
         },
-        { field: 'Field2', width: 120 },
-        { field: 'Field3', width: 120 },
-        { field: 'Field4', width: 120 },
-        { field: 'Field5', width: 120 },
-        { field: 'Field6', width: 120 },
-        { field: 'Field7', width: 120 },
+        { field: 'Field2', width: 180 },
+        { field: 'Field3', width: 90 },
+        { field: 'Field4', width: 20 },
+        { field: 'Field5', width: 40 },
+        { field: 'Field6', width: 170 },
+        { field: 'Field7', width: 150 },
         {
             field: 'Freight', headerText: 'Freight', textAlign: 'Right', editType: 'numericedit',
             width: 120, format: 'C2', validationRules: { required: true }
@@ -343,15 +338,14 @@ var grid = new ej.grids.Grid({
         {
             field: 'OrderDate', headerText: 'Order Date', editType: 'datepickeredit', format: 'yMd',
             width: 170,
-            // freeze: 'Fixed',
         },
-        { field: 'Field8', width: 120, visible: true },
-        { field: 'Field9', width: 120 },
-        { field: 'Field10', width: 120, 
-        // freeze: 'Right' 
-    },
+        { field: 'Field8' },
+        { field: 'Field9', width: 110 },
+        {
+            field: 'Field10', width: 130,
+        },
     ],
-    height: 250,
+    height: 300,
     width: 800,
 });
 grid.appendTo('#Grid');
@@ -359,6 +353,6 @@ grid.appendTo('#Grid');
 var checkbox = new ej.buttons.CheckBox({ label: 'Prevent horizontal autofill', change: chkChange });
 checkbox.appendTo('#chk');
 
-function chkChange (args) {
+function chkChange(args) {
     isPrevent = args.checked;
 }
