@@ -304,13 +304,6 @@ var grid = new ej.grids.Grid({
     toolbar: ['Add', 'Update', 'Cancel'],
     selectionSettings: { type: 'Multiple', mode: 'Cell', cellSelectionMode: 'Box' },
     editSettings: { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Batch' },
-    load: function (args) {
-        this.on('before-select-autofill-cell', function (args) {
-            if (args.isAutoFill && grid.selectionModule.selectedRowCellIndexes.length && grid.selectionModule.selectedRowCellIndexes[0].cellIndexes.indexOf(args.endInd.cellIndex) === -1) {
-                args.cancel = isPrevent;
-            }
-        });
-    },
     columns: [
         {
             field: 'OrderID', isPrimaryKey: true, headerText: 'Order ID', textAlign: 'Right',
@@ -327,8 +320,8 @@ var grid = new ej.grids.Grid({
         },
         { field: 'Field2', width: 180 },
         { field: 'Field3', width: 90 },
-        { field: 'Field4', width: 20 },
-        { field: 'Field5', width: 40 },
+        { field: 'Field4', width: 90 },
+        { field: 'Field5', width: 140 },
         { field: 'Field6', width: 170 },
         { field: 'Field7', width: 150 },
         {
@@ -339,20 +332,21 @@ var grid = new ej.grids.Grid({
             field: 'OrderDate', headerText: 'Order Date', editType: 'datepickeredit', format: 'yMd',
             width: 170,
         },
-        { field: 'Field8' },
+        { field: 'Field8', width: 110 },
         { field: 'Field9', width: 110 },
         {
             field: 'Field10', width: 130,
         },
     ],
+    aggregates: [{
+        columns: [{
+            type: 'Sum',
+            field: 'Field1',
+            footerTemplate: 'Sum: ${Sum}'
+        }]
+    }],
     height: 300,
     width: 800,
 });
 grid.appendTo('#Grid');
 
-var checkbox = new ej.buttons.CheckBox({ label: 'Prevent horizontal autofill', change: chkChange });
-checkbox.appendTo('#chk');
-
-function chkChange(args) {
-    isPrevent = args.checked;
-}
