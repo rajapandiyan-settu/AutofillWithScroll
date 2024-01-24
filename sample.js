@@ -343,7 +343,7 @@ var grid = new ej.grids.Grid({
             footerTemplate: 'Sum: ${Sum}'
         }]
     }],
-    height: 300,
+    height: 310,
     width: 800,
 });
 grid.appendTo('#Grid');
