@@ -9,7 +9,7 @@ let gridData = [
         OrderDate: new Date(8364186e5),
         Field2: "Vins et alcools Chevalier",
         Field3: "Reims",
-        Field4: "59 rue de l Abbaye",
+        Field4: "59 rue de l Abbaye Ave. Carlos Soublette #8-35",
         Field5: "CJ",
         ShipPostalCode: "51100",
         ShipCountry: "France",
@@ -27,7 +27,7 @@ let gridData = [
         OrderDate: new Date(836505e6),
         Field2: "Toms Spezialitäten",
         Field3: "Münster",
-        Field4: "Luisenstr. 48",
+        Field4: "Luisenstr. 48 Ave.",
         Field5: "CJ",
         ShipPostalCode: "44087",
         ShipCountry: "Germany",
@@ -45,7 +45,7 @@ let gridData = [
         OrderDate: new Date(8367642e5),
         Field2: "Hanari Carnes",
         Field3: "Rio de Janeiro",
-        Field4: "Rua do Paço, 67",
+        Field4: "Rua do Paço, 67 Ave",
         Field5: "RJ",
         ShipPostalCode: "05454-876",
         ShipCountry: "Brazil",
@@ -63,7 +63,7 @@ let gridData = [
         OrderDate: new Date(8367642e5),
         Field2: "Victuailles en stock",
         Field3: "Lyon",
-        Field4: "2, rue du Commerce",
+        Field4: "2, rue du Commerce Ave. Carlos Soublette #8-35",
         Field5: "CJ",
         ShipPostalCode: "69004",
         ShipCountry: "France",
@@ -81,7 +81,7 @@ let gridData = [
         OrderDate: new Date(8368506e5),
         Field2: "Suprêmes délices",
         Field3: "Charleroi",
-        Field4: "Boulevard Tirou, 255",
+        Field4: "Boulevard Tirou, 25 Ave",
         Field5: "CJ",
         ShipPostalCode: "B-6000",
         ShipCountry: "Belgium",
@@ -99,7 +99,7 @@ let gridData = [
         OrderDate: new Date(836937e6),
         Field2: "Hanari Carnes",
         Field3: "Rio de Janeiro",
-        Field4: "Rua do Paço, 67",
+        Field4: "Rua do Paço, 6 Ave. Carlos Soublette #8-357",
         Field5: "RJ",
         ShipPostalCode: "05454-876",
         ShipCountry: "Brazil",
@@ -117,7 +117,7 @@ let gridData = [
         OrderDate: new Date(8370234e5),
         Field2: "Chop-suey Chinese",
         Field3: "Bern",
-        Field4: "Hauptstr. 31",
+        Field4: "Hauptstr. 31 Ave. Carlos Soublette #8-35",
         Field5: "CJ",
         ShipPostalCode: "3012",
         ShipCountry: "Switzerland",
@@ -135,7 +135,7 @@ let gridData = [
         OrderDate: new Date(8371098e5),
         Field2: "Richter Supermarkt",
         Field3: "Genève",
-        Field4: "Starenweg 5",
+        Field4: "Starenweg 5 Ave.",
         Field5: "CJ",
         ShipPostalCode: "1204",
         ShipCountry: "Switzerland",
@@ -153,7 +153,7 @@ let gridData = [
         OrderDate: new Date(837369e6),
         Field2: "Wellington Importadora",
         Field3: "Resende",
-        Field4: "Rua do Mercado, 12",
+        Field4: "Rua do Mercado, 12 Ave.#8-35",
         Field5: "SP",
         ShipPostalCode: "08737-363",
         ShipCountry: "Brazil",
@@ -171,7 +171,7 @@ let gridData = [
         OrderDate: new Date(8374554e5),
         Field2: "HILARION-Abastos",
         Field3: "San Cristóbal",
-        Field4: "Carrera 22 con Ave. Carlos Soublette #8-35",
+        Field4: "Carrera 22 con Ave. Carlos #8-35",
         Field5: "Táchira",
         ShipPostalCode: "5022",
         ShipCountry: "Venezuela",
@@ -273,7 +273,6 @@ let gridData = [
         Field10: 14,
     },
 ];
-
 for (var i = 0; i < 200; i++) {
     gridData.push({
         OrderID: i + 1,
@@ -282,7 +281,7 @@ for (var i = 0; i < 200; i++) {
         OrderDate: new Date(8379738e5),
         Field2: "Rattlesnake Canyon Grocery",
         Field3: "Albuquerque",
-        Field4: "2817 Milton Dr.",
+        Field4: "2817 Milton Dr Ave. Carlos Soublette #8-35.",
         Field5: "NM",
         ShipPostalCode: "87110",
         ShipCountry: "USA",
@@ -292,10 +291,9 @@ for (var i = 0; i < 200; i++) {
         Field8: 15,
         Field9: 15,
         Field10: 15,
-    })
+    });
 }
 
-var isPrevent = false;
 var grid = new ej.grids.Grid({
     dataSource: gridData,
     pageSettings: { pageSize: 20 },
@@ -313,6 +311,7 @@ var grid = new ej.grids.Grid({
             field: 'CustomerID', headerText: 'Customer ID',
             validationRules: { required: true }, width: 140,
         },
+        { field: 'Field4', width: 160 },
         { field: 'Field1', width: 160, visible: true },
         {
             field: 'ShipCountry', headerText: 'Ship Country', visible: true, editType: 'dropdownedit', width: 150,
@@ -320,7 +319,6 @@ var grid = new ej.grids.Grid({
         },
         { field: 'Field2', width: 180 },
         { field: 'Field3', width: 90 },
-        { field: 'Field4', width: 90 },
         { field: 'Field5', width: 140 },
         { field: 'Field6', width: 170 },
         { field: 'Field7', width: 150 },
@@ -350,3 +348,22 @@ var grid = new ej.grids.Grid({
 });
 grid.appendTo('#Grid');
 
+let checkbox = new ej.buttons.CheckBox({ label: 'Allow TextWrap', change: function (args) {
+    grid.allowTextWrap = args.checked;
+} });
+checkbox.appendTo('#checkbox');
+
+// initialize DropDownList component
+let dropDownListObject = new ej.dropdowns.DropDownList({
+    //set the data to dataSource property
+    dataSource: ['25', '37', '50', null],
+    // set placeholder to DropDownList input element
+    placeholder: "Select rowHeight",
+    width: 150,
+    change: function (args) {
+        grid.rowHeight = parseInt(args.value);
+    }
+});
+
+// render initialized DropDownList
+dropDownListObject.appendTo('#ddlelement');
