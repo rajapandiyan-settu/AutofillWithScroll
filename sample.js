@@ -348,10 +348,17 @@ var grid = new ej.grids.Grid({
 });
 grid.appendTo('#Grid');
 
-let checkbox = new ej.buttons.CheckBox({ label: 'Allow TextWrap', change: function (args) {
+let checkbox1 = new ej.buttons.CheckBox({ label: 'Allow TextWrap', change: function (args) {
+    grid.clearSelection();
     grid.allowTextWrap = args.checked;
 } });
-checkbox.appendTo('#checkbox');
+checkbox1.appendTo('#checkbox1');
+
+let checkbox2 = new ej.buttons.CheckBox({ label: 'Allow RTL', change: function (args) {
+    grid.clearSelection();
+    grid.enableRtl = args.checked;
+} });
+checkbox2.appendTo('#checkbox2');
 
 // initialize DropDownList component
 let dropDownListObject = new ej.dropdowns.DropDownList({
