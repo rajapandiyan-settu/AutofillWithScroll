@@ -360,6 +360,12 @@ let checkbox2 = new ej.buttons.CheckBox({ label: 'Allow RTL', change: function (
 } });
 checkbox2.appendTo('#checkbox2');
 
+let checkbox3 = new ej.buttons.CheckBox({ label: 'Enable AutoFill', checked: true, change: function (args) {
+    grid.clearSelection();
+    grid.enableAutoFill = args.checked;
+} });
+checkbox3.appendTo('#checkbox3');
+
 // initialize DropDownList component
 let dropDownListObject = new ej.dropdowns.DropDownList({
     //set the data to dataSource property
